@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: librehshpreed
+  labels:
+    app: librehshpreed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: librehshpreed
+  template:
+    metadata:
+      labels:
+        app: librehshpreed
+    spec:
+      containers:
+        - name: librehshpreed
+          image: linuxserver/librespeed
+          ports:
+            - containerPort: 80
+          envFrom:
+          - secretRef:
+              name: libreshpeed-shecret
+
